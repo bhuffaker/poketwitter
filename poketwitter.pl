@@ -21,7 +21,6 @@ while (1) {
         print "$twitter_url\n";
         open (IN, "wget -qO- $twitter_url |");
         while (<IN>) {
-#print if (/\%/);
             my $fullMessage = $_;
             $fullMessage =~ s|<.+?>||g;
             my ($name,$vi,$timeuntil) = (undef, 0,0,0);
