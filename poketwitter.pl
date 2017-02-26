@@ -14,9 +14,9 @@ while (1) {
     my %contact_selector;
     LoadSelectors($selector_file, \%contact_selector);
     
-    tie %seen, "DB_File", "seen.db";
     my @twitters = LoadTwitters($twitters_file);
     foreach my $twitter (@twitters) {
+        tie %seen, "DB_File", "seen.db";
         print "$twitter\n";
         my $twitter_url = "https://mobile.twitter.com/$twitter";
         open (IN, "wget -qO- $twitter_url |");
@@ -62,8 +62,8 @@ while (1) {
 	    }
 	}
 	close IN;
+        untie %seen;
     }
-    untie %seen;
 exit;
     sleep($five_minutes);
 }
@@ -84,8 +84,8 @@ sub SMS {
     unless (-f $dont_message_file) {
         foreach (@contacts)
         {
-#                    system("osascript -e 'tell application \"Messages\" to send \"$message\" to buddy \"$_\"'");
-                print("osascript -e 'tell application \"Messages\" to send \"$message\" to buddy \"$_\"'\n");
+            system("osascript -e 'tell application \"Messages\" to send \"$message\" to buddy \"$_\"'");
+            print("osascript -e 'tell application \"Messages\" to send \"$message\" to buddy \"$_\"'\n");
         }
     } else {
         print "        ",join(",",@contacts),": found $dont_message_file file, will not send message\n";
