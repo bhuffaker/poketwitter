@@ -46,7 +46,7 @@ while (1) {
                     "url" => $url
                     }};
                 my $message = "$name $vi% $url";
-                #unless (defined $seen{$message}) {
+                unless (defined $seen{$message}) {
                     $seen{$message} = 1;
                     print "    $name $vi\n";
                     my @contacts;
@@ -58,7 +58,7 @@ while (1) {
                     if ($#contacts >= 0) {
                         SMS($message, @contacts);
                     }
-		#}
+		}
 	    }
 	}
 	close IN;
