@@ -12,13 +12,32 @@ $func = sub {
     return unless (defined $name);
 
     my %name_always = map { $_ => 1 } qw(
+	Mewtwo
+	Ho-Oh
+        Lugia
+	Entei
+	Raikou
+	Zapdos
+	Moltres
+	Celebi
+	Mew
+	Articuno
+
         Blissey
 	Snorlax
         Rhydon
 	Alakazam
+	Gyarados
 	Vaporeon Espeon
         Dratini Dragonair Dragonite
         Larvitar Pupitar Tyranitar
+
+	Donphan
+	Heracross
+	Exeggutor
+	Golem
+	Flareon
+	
         );
 #    my %name_ignore = map { $_ => 1 } qw(Arcanine Bellsprout Cubone Diglett Doduo Exeggcute Makey Nidoqueen NidoranFemale NidoranMale Nidorino♂ Nidoran♀ Parasect Pidgeot Ponyta Primeape Sandshrew);
     my %name_ignore;
