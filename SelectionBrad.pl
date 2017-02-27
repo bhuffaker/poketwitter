@@ -12,7 +12,11 @@ $func = sub {
     return unless (defined $name);
 
     my %name_always = map { $_ => 1 } qw(
-        Chansey Blissey
+        Blissey
+	Snorlax
+        Rhydon
+	Alakazam
+	Vaporeon Espeon
         Dratini Dragonair Dragonite
         Larvitar Pupitar Tyranitar
         );
