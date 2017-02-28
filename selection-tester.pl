@@ -7,17 +7,16 @@ LoadFunction ("SelectionBrad.pl", "Brad", \%func);
 LoadFunction ("SelectionJoey.pl", "Joey", \%func);
 LoadFunction ("SelectionChristian.pl", "Christian", \%func);
 foreach my $pokemon (
-    ["Chansey", "10", "10", "PoGoUTC"],
-    ["Makey", "2000", "10", "Nowhere"],
-    ["Makey", "2000", "10", "PoGoGaslamp"],
-    ["Makey", "200", "100", "PoGoGaslamp"],
-    ["Select", "200", "100", "PoGoGaslamp"],
-    ["Select", "200", "100", "PoGoRanchoPQ"]
+    ["Chansey", "10", "PoGoUTC"],
+    ["Makey", "10", "Nowhere"],
+    ["Makey", "10", "PoGoGaslamp"],
+    ["Makey", "100", "PoGoGaslamp"],
+    ["Select", "100", "PoGoGaslamp"],
+    ["MewTwo", "100", "PoGoRanchoPQ"]
     ) {
-    my ($name, $cp, $vi, $twitter) = @$pokemon;
+    my ($name, $vi, $twitter) = @$pokemon;
     my %pokemon = %{{
         "name" => $name,
-        "cp" => $cp,
         "vi" => $vi,
         "twitter" => $twitter
         }};

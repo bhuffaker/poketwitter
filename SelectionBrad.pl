@@ -9,11 +9,13 @@ $func = sub {
     my $twitter = $hash{twitter};
     my $timeuntil = $hash{timeuntil};
 
+    $name =~ y/A-Z/a-z/;
+
     return unless (defined $name);
 
-    my %name_always = map { $_ => 1 } qw(
-	Mewtwo
-	Ho-Oh
+    my %name_always = BradMap(qw(
+	mewtwo
+	ho-oh
         Lugia
 	Entei
 	Raikou
@@ -29,7 +31,7 @@ $func = sub {
 	Alakazam
 	Gyarados
 	Vaporeon Espeon
-        Dratini Dragonair Dragonite
+        Dragonite
         Larvitar Pupitar Tyranitar
 
 	Donphan
@@ -38,13 +40,24 @@ $func = sub {
 	Golem
 	Flareon
 	
-        );
+        ));
 #    my %name_ignore = map { $_ => 1 } qw(Arcanine Bellsprout Cubone Diglett Doduo Exeggcute Makey Nidoqueen NidoranFemale NidoranMale Nidorino♂ Nidoran♀ Parasect Pidgeot Ponyta Primeape Sandshrew);
     my %name_ignore;
-    my %twitter = map { $_ => 1 } qw(PoGoUTC PoGoLaJolla PoGoGaslamp SeaportDowntown Laprasnado);
+    my %twitter = BradMap(qw(PoGoUTC PoGoLaJolla PoGoGaslamp SeaportDowntown Laprasnado));
     
+    return 1 if ($vi >= 100 && $name_always{$name});
     return unless ($twitter{$twitter});
-    return 1 if ($name_always {$name});
-    return 1 if (($vi >= 100 or $vi == 0) and !defined $name_ignore{$name});
+    return 1 if ($name_always{$name});
+    return 1 if (($vi >= 97 or $vi == 0) and !defined $name_ignore{$name});
     return;
 };
+
+sub BradMap {
+    my @keys = @_;
+    my %hash;
+    foreach my $key (@keys) {
+	$key =~ y/A-Z/a-z/;
+	$hash{$key} = 1;
+    }
+    return %hash;
+}
