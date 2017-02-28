@@ -10,6 +10,7 @@ $func = sub {
     my $timeuntil = $hash{timeuntil};
 
     $name =~ y/A-Z/a-z/;
+    $twitter =~ y/A-Z/a-z/;
 
     return unless (defined $name);
 
