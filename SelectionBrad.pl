@@ -18,6 +18,7 @@ $func = sub {
 	mewtwo
 	ho-oh
         Lugia
+	Suicune
 	Entei
 	Raikou
 	Zapdos
@@ -33,19 +34,42 @@ $func = sub {
 	Gyarados
 	Vaporeon Espeon
         Dragonite
-        Larvitar Pupitar Tyranitar
+        Tyranitar
 
-	Donphan
 	Heracross
 	Exeggutor
 	Golem
 	Flareon
+	Unown
+
+	meganium
+	Typhlosion
+	Feraligatr
+	Flaaffy Ampharos
+	Bellossom
+	Azumarill
+	Politoed
+	Jumpluff
+	Sunflora
+	Slowking
+	Girafarig
+	Steelix
+	Qwilfish
+	 Heracross
+	Piloswine
+	Corsola
+	Delibird
+	Skarmory
+	Kingdra
+	Porygon2
+	Smeargle
+	Tyrogue Hitmontop
 	
         ));
 #    my %name_ignore = map { $_ => 1 } qw(Arcanine Bellsprout Cubone Diglett Doduo Exeggcute Makey Nidoqueen NidoranFemale NidoranMale Nidorino♂ Nidoran♀ Parasect Pidgeot Ponyta Primeape Sandshrew);
     my %name_ignore;
     my %twitter = BradMap(qw(PoGoUTC PoGoLaJolla PoGoGaslamp SeaportDowntown Laprasnado));
-    
+
     return 1 if ($vi >= 100 && $name_always{$name});
     return unless ($twitter{$twitter});
     return 1 if ($name_always{$name});
