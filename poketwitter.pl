@@ -25,6 +25,7 @@ while (1) {
             $fullMessage =~ s|<.+?>||g;
             my ($name,$vi,$timeuntil) = (undef, 0,0,0);
             if ( (/([^\s]+) appeared!.*IV:(\d+\.\d+)\%/)
+		|| (/\s*([^\s]+) [^\s] (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
 		|| (/([^\s]+) \(IV: (\d+)%\) until ([^\s]*)/)
 		|| (/\s*([^\s]+) (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
 		|| (/([^\s]+) has spawned.+IV: (\d+)/)
@@ -39,6 +40,7 @@ while (1) {
             }
 	    if (defined $name && /url="https?:\/\/(maps.google.com[^\"]+)/) {
 	        my $url = $1;
+		$name =~ s/[^A-Za-z]//g;
                 my %pokemon = %{{
                     "name" => $name,
                     "vi" => $vi,

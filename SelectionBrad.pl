@@ -55,15 +55,14 @@ $func = sub {
 	Girafarig
 	Steelix
 	Qwilfish
-	 Heracross
+	Heracross
 	Piloswine
 	Corsola
 	Delibird
-	Skarmory
 	Kingdra
 	Porygon2
 	Smeargle
-	Tyrogue Hitmontop
+	Tyrogue
 	
         ));
 #    my %name_ignore = map { $_ => 1 } qw(Arcanine Bellsprout Cubone Diglett Doduo Exeggcute Makey Nidoqueen NidoranFemale NidoranMale Nidorino♂ Nidoran♀ Parasect Pidgeot Ponyta Primeape Sandshrew);
