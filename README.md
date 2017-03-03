@@ -2,7 +2,7 @@
 ############
 # Don't Send SMS
 ############
-If you create a dont_sms file in the director, it will print to STDOUT
+If you create a dont_message file in the director, it will print to STDOUT
 matches, but will not send a sms message
 
 ############
