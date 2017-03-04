@@ -5,9 +5,17 @@ use DB_File;
 
 my $dont_message_file = "dont_message";
 my $twitters_file = "twitters.txt";
+my $pokedex_file = "pokedex.txt";
 my $selector_file = "selectors.txt";
 my $five_minutes = 3*60;
+require 'pokedex.pl';
 
+
+my @pokedex = pokedex();
+#my @typedefs = qw(@pokedex);
+my @regexes = map { qr{$_} } @pokedex;
+
+sub mainfunc {
 print "Starting up\n";
 while (1) {
     my %seen;
@@ -28,6 +36,13 @@ while (1) {
             ($name,$vi,$timeuntil) = twitterMatch($_);
 	    if (defined $name && /url="https?:\/\/(maps.google.com[^\"]+)/) {
 	        my $url = $1;
+            if (!defined $name) {
+                #no pokemon found, but a map link found. warn JOEY
+                my @warningContact;
+                push @warningContact, 'Joey Elwell';
+                SMS("no pokemon match found $fullMessage", @warningContact);
+
+            }
 		$name =~ s/[^A-Za-z]//g;
                 my %pokemon = %{{
                     "name" => $name,
@@ -57,24 +72,26 @@ while (1) {
     sleep($five_minutes);
 }
 
+}
+
 sub twitterMatch {
-    my ($_) = @_;
-    if ( (/([^\s]+) appeared!.*IV:(\d+\.\d+)\%/)
-        || (/\s*([^\s]+) [♀|♂] (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/\s*([^\s]+) [♀|♂] (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/\s*([^\s]+) [^\s]* (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/([^\s]+) \(IV: (\d+)%\) until ([^\s]*)/)
-		|| (/\s*([^\s]+) (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/([^\s]+) has spawned.+IV: (\d+)/)
-		|| (/>\s*([^\s]+)\s*\((\d+\.\d+)\% /)
-		|| (/\s*([^\s]+)\s*\((\d+\.\d+)\% /)
-		|| (/>\s*([^\s]+)\s*(\d+\.\d+)\% /)
-		|| (/>\s*([^\s]+)\s*(\d+\.\d+)\% /)
-		|| (/.*: ([^\s]+) \((\d+\.\d+)\%IV/)
-		|| (/([^\s]+)\s*(\d+)\%/)
-    ) {
-        return ($1, $2, $3);
+    my ($line) = @_;
+    REGEX:
+foreach my $regex (@regexes) {
+    my $iv = undef;
+  if ($line =~ $regex) {
+    # found a pokemon so stop looking
+    #  print "matched to $regex";
+    if ($line =~ /(\d+\.\d+)\%/) {
+        $iv = $1;
     }
+    my $pokemon = $regex;
+    $pokemon =~ s/[^A-Za-z]//g;
+#    last REGEX; # Stop looking
+    return ($pokemon, $iv, 0);
+  }
+}
+return (undef, undef, undef);
 }
 
 sub SMS {
@@ -139,5 +156,4 @@ sub LoadFunction {
     } else {
         $selectors->{$sms_name} = $func;
     }
-} 
-
+}

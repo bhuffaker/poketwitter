@@ -1,6 +1,7 @@
 #!  /usr/bin/env perl
 use strict;
 use warnings;
+require 'poketwitter.pl';
 
 print "starting up\n";
 my $func;
@@ -30,50 +31,19 @@ EOF
 $testmap{"Larvitar"} = ["33.3", <<EOF];
       <div class="dir-ltr" dir="ltr">  Lake Elsinore: Larvitar♂ 33.3% (2/0/13, Bite/Ancient Power) til 14:35:44 (21m 58s). <a href="https://t.co/Q7IrAcc1iy"rel="nofollow noopener"dir="ltr"data-expanded-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"data-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"class="twitter_external_link dir-ltr tco-link"target="_blank"title="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056">maps.google.com/maps?q=33.6885…</a>
 EOF
+#BadContent
+$testmap{"broken"} = ["33.3", <<EOF];
+      <div class="dir-ltr" dir="ltr">  New News! yaya <a href="https://t.co/Q7IrAcc1iy"rel="nofollow noopener"dir="ltr"data-expanded-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"data-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"class="twitter_external_link dir-ltr tco-link"target="_blank"title="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056">maps.google.com/maps?q=33.6885…</a>
+EOF
 
+FOREACHLOOP:
 foreach my $validName (keys %testmap) {
-    my ($name,$vi,$timeuntil) = twitterMatch($testmap{$validName}[1]);
+    my ($name,$iv,$timeuntil) = twitterMatch($testmap{$validName}[1]);
+    if (!defined $name) {
+        print "no pokemon matched\n";
+        next FOREACHLOOP;
+    }
     print "$validName :  $name\n";
-    print "$testmap{$validName}[0] :  $vi\n";
+    print "$testmap{$validName}[0] :  $iv\n";
 
 }
-
-
-sub twitterMatch {
-    my ($_) = @_;
-    if ( (/([^\s]+) appeared!.*IV:(\d+\.\d+)\%/)
-        || (/\s*([^\s]+) [♀|♂] (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/\s*([^\s]+) [♀|♂] (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/\s*([^\s]+) [^\s]* (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/([^\s]+) \(IV: (\d+)%\) until ([^\s]*)/)
-		|| (/\s*([^\s]+) (\d+\.\d+)\%[^<]+(\d+):(\d+):(\d+)/)
-		|| (/([^\s]+) has spawned.+IV: (\d+)/)
-		|| (/>\s*([^\s]+)\s*\((\d+\.\d+)\% /)
-		|| (/\s*([^\s]+)\s*\((\d+\.\d+)\% /)
-		|| (/>\s*([^\s]+)\s*(\d+\.\d+)\% /)
-		|| (/>\s*([^\s]+)\s*(\d+\.\d+)\% /)
-		|| (/.*: ([^\s]+) \((\d+\.\d+)\%IV/)
-		|| (/([^\s]+)\s*(\d+)\%/)
-    ) {
-        return ($1, $2, $3);
-    }
-}
-
-sub LoadFunction {
-    my ($file, $func_hash) = @_;
-    return unless (-f $file);
-    open (IN, "<$file") || die("Unable to open $file:$!");
-    my $buffer = "";
-    while (<IN>) {
-        $buffer .= $_;
-    }
-    close IN;
-    my $func;
-    eval $buffer;
-    unless (defined $func) {
-        print STDERR "ERROR $file $@\n";
-    } else {
-        #$func_hash->{$sms_name} = $func;
-    }
-}
-
