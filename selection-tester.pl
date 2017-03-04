@@ -8,9 +8,9 @@ LoadFunction ("SelectionJoey.pl", "Joey", \%func);
 LoadFunction ("SelectionChristian.pl", "Christian", \%func);
 foreach my $pokemon (
     ["MewTwo", "10", "PoGoUTC"],
-    ["Makey", "10", "Nowhere"],
-    ["Makey", "10", "PoGoGaslamp"],
-    ["Makey", "100", "PoGoGaslamp"],
+    ["Mankey", "10", "Nowhere"],
+    ["Mankey", "10", "PoGoGaslamp"],
+    ["Mankey", "100", "PoGoGaslamp"],
     ["Select", "100", "PoGoGaslamp"],
     ["MewTwo", "100", "PoGoRanchoPQ"]
     ) {

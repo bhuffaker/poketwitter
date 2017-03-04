@@ -26,8 +26,8 @@ $func = sub {
 	Unown
         ));
 
-	my %name_ignore = map { $_ => 1 } qw(Marill Houndour Sudowoodo Sunkern Azumarill Venomoth Spinarak Slugma Shellder Snubbull Shuckle Chikorita Cyndaquil Murkrow Teddiursa Swinub Ponyta Venonat Hypno Machop Rhyhorn Chansey Exeggcute Exeggutor Ditto Charmander Primeape Arbok Nidorina Pidgeot Omastar Omanyte Bellsprout Jigglypuff Weepinbell Clefable Psyduck Drowzee Seel Kakuna Butterfree
-Parasect Staryu Starmie Pidgeotto Krabby Metapod Tentacool Horsea Marowak Raticate Caterpie Golbat Diglett Nidoran♂ Mankey Ekans Paras Growlithe Sandshrew Spearow Zubat Cubone Clefairy Voltorb Doduo Pidgey
+	my %name_ignore = map { $_ => 1 } qw(Teddiursa Marill Houndoom Phanpy Houndour Sudowoodo Sunkern Granbull Snubbull Azumarill Venomoth Spinarak Slugma Shellder Snubbull Shuckle Chikorita Crobat Cyndaquil Murkrow Teddiursa Swinub Ponyta Venonat Hypno Machop Rhyhorn Chansey Exeggcute Exeggutor Ditto Charmander Primeape Arbok Nidorina Pidgeot Omastar Omanyte Bellsprout Jigglypuff Weepinbell Clefable Psyduck Drowzee Seel Kakuna Butterfree
+Parasect Staryu Starmie Pidgeotto Krabby Metapod Tentacool Horsea Marowak Raticate Caterpie Golbat Diglett Nidoran♂ Mankey Ekans Paras Growlithe Sandslash Sandshrew Spearow Zubat Cubone Clefairy Voltorb Doduo Pidgey
 Golem Geodude Nidoran? Eevee Pinsir Rattata Abra Graveler Nidoran Nidoran♀ Slowpoke Slowbro);
 
     return 1 if ($name_always{$name});
