@@ -33,7 +33,6 @@ $func = sub {
 	Alakazam
 	Gyarados
 	Vaporeon Espeon
-        Dragonite
         Tyranitar
 
 	Heracross
@@ -45,7 +44,7 @@ $func = sub {
 	meganium
 	Typhlosion
 	Feraligatr
-	Flaaffy Ampharos
+	Ampharos
 	Bellossom
 	Azumarill
 	Politoed
@@ -54,7 +53,6 @@ $func = sub {
 	Slowking
 	Girafarig
 	Steelix
-	Qwilfish
 	Heracross
 	Piloswine
 	Corsola
