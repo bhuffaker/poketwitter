@@ -8,6 +8,9 @@ $func = sub {
     my $vi = $hash{vi};
     my $twitter = $hash{twitter};
 
+    $name =~ y/A-Z/a-z/;
+    $twitter =~ y/A-Z/a-z/;
+
     return unless (defined $name);
 
     my %name_always = ChrisMap(qw(
@@ -24,8 +27,8 @@ $func = sub {
 
         Unown
         ));
-    my %name_ignore = map { $_ => 1 } qw();
-    my %twitters = map { $_ => 1 } qw(PoGoRanchoPQ RanchoHillsHood);
+    my %name_ignore = ChrisMap (qw());
+    my %twitters = ChrisMap (qw(PoGoRanchoPQ RanchoHillsHood));
 
     return unless (defined $twitters{$twitter});
     return if ($name_ignore{$name});

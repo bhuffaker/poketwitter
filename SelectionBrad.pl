@@ -43,7 +43,6 @@ $func = sub {
 
 	meganium
 	Typhlosion
-	Feraligatr
 	Ampharos
 	Bellossom
 	Azumarill

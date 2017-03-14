@@ -12,6 +12,8 @@ foreach my $pokemon (
     ["Mankey", "10", "PoGoGaslamp"],
     ["Mankey", "100", "PoGoGaslamp"],
     ["Select", "100", "PoGoGaslamp"],
+    ["Unown", "80", "PoGoGaslamp"],
+    ["Abra", "100", "PoGoGaslamp"],
     ["MewTwo", "100", "PoGoRanchoPQ"]
     ) {
     my ($name, $vi, $twitter) = @$pokemon;
