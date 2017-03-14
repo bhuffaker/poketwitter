@@ -50,19 +50,30 @@ while (1) {
                     "twitter" => $twitter,
                     "url" => $url
                     }};
-                my $message = "$name $vi% $url";
-                unless (defined $seen{$message}) {
-                    $seen{$message} = 1;
-                    print "    $name $vi\n";
-                    my @contacts;
-                    foreach my $contact (keys %contact_selector) {
-                        if ($contact_selector{$contact}->(%pokemon)) {
-                            push @contacts, $contact;
-                        }
-                    }
-                    if ($#contacts >= 0) {
-                        SMS("$message $fullMessage", @contacts);
-                    }
+		if (!defined $vi) {
+		    my $message = "$fullMessage is broken";
+		    unless (defined $seen{$message}) {
+			my @errorContacts;
+                        push @errorContacts, 'Joey Elwell';
+        		SMS("$fullMessage is broken", @errorContacts);
+        		$seen{$message} = 1;
+		    }
+		}
+		else {
+		    my $message = "$name $vi% $url";
+		    unless (defined $seen{$message}) {
+			$seen{$message} = 1;
+			print "    $name $vi\n";
+			my @contacts;
+			foreach my $contact (keys %contact_selector) {
+			    if ($contact_selector{$contact}->(%pokemon)) {
+				push @contacts, $contact;
+			    }
+			}
+			if ($#contacts >= 0) {
+			    SMS("$message $fullMessage", @contacts);
+			}
+		    }
 		}
 	    }
 	}

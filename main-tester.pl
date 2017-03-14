@@ -35,6 +35,10 @@ EOF
 $testmap{"broken"} = ["33.3", <<EOF];
       <div class="dir-ltr" dir="ltr">  New News! yaya <a href="https://t.co/Q7IrAcc1iy"rel="nofollow noopener"dir="ltr"data-expanded-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"data-url="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056"class="twitter_external_link dir-ltr tco-link"target="_blank"title="http://maps.google.com/maps?q=33.688595206347244,-117.39850594866056">maps.google.com/maps?q=33.6885…</a>
 EOF
+#LaprasNado
+$testmap{"Unown"} = ["95.6", <<EOF];
+                <div class="dir-ltr" dir="ltr">  Coronado: Unown ⚲ 95.6% (15/15/13 - 8.4kg/0.7m - Hidden Power/Struggle) til 13:37:32 (29m 47s). <a href="https://t.co/HXSX5uSrmH"rel="nofollow noopener"dir="ltr"data-expanded-url="http://maps.google.com/maps?q=32.62164861314992,-117.13240387111311"data-url="http://maps.google.com/maps?q=32.62164861314992,-117.13240387111311"class="twitter_external_link dir-ltr tco-link"target="_blank"title="http://maps.google.com/maps?q=32.62164861314992,-117.13240387111311">maps.google.com/maps?q=32.6216…</a> 
+EOF
 
 FOREACHLOOP:
 foreach my $validName (keys %testmap) {
