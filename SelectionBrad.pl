@@ -26,7 +26,39 @@ $func = sub {
 	Celebi
 	Mew
 	Articuno
+	Venusaur
 
+	NINETALES
+	FARFETCHD
+	POLIWRATH
+	MUK
+	KANGASKHAN
+	ELECTRODE
+	HITMONLEE
+	POLIWRATH
+	KOFFING
+	WEEZING
+	STARMIE
+	MR-MIME
+	JYNX
+
+	FLAAFFY
+	BELLOSSOM
+	POLITOED
+	JUMPLUFF
+	SUNFLORA
+	UNOWN
+	GIRAFARIG
+	Steelix
+	SCIZOR
+	HERACROSS
+	Corsola
+	Delibird
+	Kingdra
+	Smeargle
+	Tyrogue
+
+	
         Blissey
 	Snorlax
         Rhydon
@@ -39,37 +71,19 @@ $func = sub {
 	Exeggutor
 	Golem
 	Flareon
-	Unown
 
 	meganium
-	Typhlosion
-	Ampharos
-	Bellossom
-	Azumarill
-	Politoed
-	Jumpluff
-	Sunflora
-	Slowking
-	Girafarig
-	Steelix
-	Heracross
-	Piloswine
-	Corsola
-	Delibird
-	Kingdra
-	Porygon2
-	Smeargle
-	Tyrogue
 	
         ));
 #    my %name_ignore = map { $_ => 1 } qw(Arcanine Bellsprout Cubone Diglett Doduo Exeggcute Makey Nidoqueen NidoranFemale NidoranMale Nidorino♂ Nidoran♀ Parasect Pidgeot Ponyta Primeape Sandshrew);
-    my %name_ignore;
+    my %name_ignore = BradMap(qw( Machop Magikarp Pidgeo parasect ));
     my %twitter = BradMap(qw(PoGoUTC PoGoLaJolla PoGoGaslamp SeaportDowntown Laprasnado));
 
     return 1 if ($vi >= 100 && $name_always{$name});
     return unless ($twitter{$twitter});
     return 1 if ($name_always{$name});
-    return 1 if (($vi >= 97 or $vi == 0) and !defined $name_ignore{$name});
+    return if (defined $name_ignore{$name});
+    return 1 if ($vi >= 97 or $vi == 0);
     return;
 };
 

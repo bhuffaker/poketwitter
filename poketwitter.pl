@@ -51,7 +51,7 @@ while (1) {
                     "url" => $url
                     }};
 		if (!defined $vi) {
-		    my $message = "$fullMessage is broken";
+		    my $message = "$name unknown% $url";
 		    unless (defined $seen{$message}) {
 			my @errorContacts;
                         push @errorContacts, 'Joey Elwell';
@@ -87,6 +87,7 @@ while (1) {
 
 sub twitterMatch {
     my ($line) = @_;
+    $line =~ s|<.+?>||g;
     REGEX:
 foreach my $regex (@regexes) {
     my $iv = undef;
